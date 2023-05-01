@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
 
     void GameOver()
     {
-        finalScoreText.text = "Final score: " + player.highScore + " m";
+        finalScoreText.text = player.highScore + " m";
 
         gameOverScreen.SetActive(true);
     }

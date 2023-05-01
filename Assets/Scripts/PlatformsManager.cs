@@ -17,10 +17,11 @@ public class PlatformsManager : EndlessManager
     /// </summary>
     /// <param name="posAxis">The y position of the platform.</param>
     /// <returns>The new platformManager object.</returns>
-    protected override GameObject CreateBlock(float posAxis) {
-        GameObject newObj = base.CreateBlock(posAxis);
+    protected override GameObject AfterCreateBlock(GameObject newObj)
+    {
         BlocksManager bm = newObj.GetComponent<BlocksManager>();
 
+        float posAxis = bm.transform.position[axis];
         bm.SetHeight(posAxis);
         bm.offset = (posAxis % 2) * (bm.spacing / 2);
 
@@ -31,13 +32,13 @@ public class PlatformsManager : EndlessManager
     /// Move the platform up or down to the ends of the list depending on the floor direction to move.
     /// </summary>
     /// <param name="direction">The direction the floor should be moved.</param>
-    protected override GameObject MoveBlock(int direction) {
-        GameObject obj = base.MoveBlock(direction);
-        BlocksManager bm = obj.GetComponent<BlocksManager>();
+    protected override GameObject AfterMoveBlock(GameObject newObj)
+    {
+        BlocksManager bm = newObj.GetComponent<BlocksManager>();
 
-        float newY = obj.transform.position[axis];
+        float newY = newObj.transform.position[axis];
         bm.SetHeight(newY);
 
-        return obj;
+        return newObj;
     }
 }

@@ -14,14 +14,15 @@ public class BlocksManager : EndlessManager
         axis = 0;
     }
 
-    protected override GameObject CreateBlock(float posAxis) {
-        GameObject newObj = base.CreateBlock(posAxis);
+    protected override GameObject AfterCreateBlock(GameObject newObj)
+    {
         GameUtils.ChangePosition(newObj, transform.position.y, 1);
 
         return newObj;
     }
 
-    protected override float getPosForBlock(int nBlock) {
+    protected override float getPosForBlock(int nBlock)
+    {
         return base.getPosForBlock(nBlock) + offset;
     }
 
@@ -29,7 +30,8 @@ public class BlocksManager : EndlessManager
     /// Sets the height for the platform blocks and moves them to the new height.
     /// </summary>
     /// <param name="newHeight">The new height for the platform.</param>
-    public void SetHeight(float newHeight) {
+    public void SetHeight(float newHeight)
+    {
         if (tail == null)
             return;
 
