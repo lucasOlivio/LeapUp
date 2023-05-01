@@ -8,6 +8,7 @@ using UnityEngine;
 public class EndlessManager : MonoBehaviour
 {
     public int spacing; // Space between the blocks
+    public int width; // The width for each unit of block
     public int nBlocks; // Number of blocks total
     public GameObject blockPrefab; // Prefab for the block object
 
@@ -32,7 +33,6 @@ public class EndlessManager : MonoBehaviour
     protected int axis = -1; // In which axis the movement will occur (0 - x; 1 - y; 2 - z)
     protected float currentPlayerPos; // Current player position
     protected float center; // The center of the area where the player should be
-    [SerializeField] protected int width; // The width for each unit of block
 
     // Start is called before the first frame update
     void Start()
@@ -80,8 +80,7 @@ public class EndlessManager : MonoBehaviour
     {
         GameObject newBlock = Instantiate(blockPrefab);
 
-        // Dinamically changes the block width and positioning
-        GameUtils.ChangeScale(newBlock, width, axis);
+        // Dinamically changes the block positioning
         GameUtils.ChangePosition(newBlock, position, axis);
 
         return AfterCreateBlock(newBlock);

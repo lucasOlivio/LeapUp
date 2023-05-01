@@ -396,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScore: 0
   moveSpeed: 18
-  startHeight: 10
+  startHeight: 5
   jumpForce: 47
   gravityScale: 15
 --- !u!212 &315250674
@@ -672,9 +672,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spacing: 5
+  width: 1
   nBlocks: 8
   blockPrefab: {fileID: 647056446596747538, guid: 545bad3c79c03b042b75be1b6d4d2b0d, type: 3}
-  width: 1
 --- !u!4 &594887522
 Transform:
   m_ObjectHideFlags: 0
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9568628, g: 0.9960785, b: 0.8941177, a: 0.60784316}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}

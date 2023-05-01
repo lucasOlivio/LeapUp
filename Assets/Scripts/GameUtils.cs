@@ -7,16 +7,41 @@ using CustomExceptions;
 public static class GameUtils
 {
     /// <summary>
-    /// Change the scale in the given axis for the gameobject
+    /// Change the size in the given axis for the gameobject
     /// </summary>
     /// <param name="gameObject">GameObject to be changed.</param>
-    /// <param name="deltaChange">Delta to change the scale.</param>
-    /// <param name="axis">Axis to change the scale.</param>
-    public static void ChangeScale(GameObject gameObject, float deltaChange, int axis)
+    /// <param name="deltaChange">Delta to change the size.</param>
+    /// <param name="axis">Axis to change the size.</param>
+    public static void ChangeSize(GameObject gameObject, float deltaChange, int axis)
     {
-        Vector3 scale = gameObject.transform.localScale;
-        scale[axis] *= deltaChange;
-        gameObject.transform.localScale = scale;
+        SpriteRenderer spriteRenderer;
+        try
+        {
+            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        }
+        catch
+        {
+            Debug.Log($"No SpriteRendered for the {gameObject.name} object!");
+            return;
+        }
+        Vector2 size = spriteRenderer.size;
+        size[axis] *= deltaChange;
+        spriteRenderer.size = size;
+
+        // Modify the collider size
+        BoxCollider2D collider;
+        try
+        {
+            collider = gameObject.GetComponent<BoxCollider2D>();
+        }
+        catch
+        {
+            Debug.Log($"No BoxCollider2D for the {gameObject.name} object!");
+            return;
+        }
+        Vector2 colliderSize = collider.size;
+        colliderSize[axis] *= deltaChange;
+        collider.size = colliderSize; // Set the new width of the collider
     }
 
     /// <summary>

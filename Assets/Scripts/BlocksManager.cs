@@ -16,6 +16,7 @@ public class BlocksManager : EndlessManager
 
     protected override GameObject AfterCreateBlock(GameObject newObj)
     {
+        GameUtils.ChangeSize(newObj, width, axis);
         GameUtils.ChangePosition(newObj, transform.position.y, 1);
 
         return newObj;
