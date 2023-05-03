@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using CustomExceptions;
-
 public static class GameUtils
 {
     /// <summary>

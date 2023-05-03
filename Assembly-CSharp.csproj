@@ -36,20 +36,20 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BlocksManager.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\Exceptions.cs" />
-     <Compile Include="Assets\Scripts\UIController.cs" />
-     <Compile Include="Assets\Scripts\PlatformsManager.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\GameUtils.cs" />
-     <Compile Include="Assets\Scripts\CameraScript.cs" />
+     <Compile Include="Assets\Scripts\Managers\BlocksManager.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\Player.cs" />
+     <Compile Include="Assets\Scripts\CustomExceptions\GameObjectNotFoundException.cs" />
+     <Compile Include="Assets\Scripts\UI\UIController.cs" />
+     <Compile Include="Assets\Scripts\Managers\PlatformsManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Utils\GameUtils.cs" />
+     <Compile Include="Assets\Scripts\UI\CameraScript.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-     <Compile Include="Assets\Scripts\EndlessManager.cs" />
-     <Compile Include="Assets\Scripts\CameraScript_basic_follow.cs" />
-     <Compile Include="Assets\Scripts\Player_basic_movement.cs" />
-     <Compile Include="Assets\Scripts\Player_basic_movements_rigidbody.cs" />
-     <Compile Include="Assets\Scripts\GroundManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\EndlessManager.cs" />
+     <Compile Include="Assets\Scripts\UI\CameraScript_basic_follow.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\Player_basic_movement.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\Player_basic_movements_rigidbody.cs" />
+     <Compile Include="Assets\Scripts\Managers\GroundManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

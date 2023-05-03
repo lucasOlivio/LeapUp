@@ -28,7 +28,7 @@ public class BlocksManager : EndlessManager
     }
 
     /// <summary>
-    /// Sets the height for the platform blocks and moves them to the new height.
+    /// Sets the new height for all of the platform blocks.
     /// </summary>
     /// <param name="newHeight">The new height for the platform.</param>
     public void SetHeight(float newHeight)
