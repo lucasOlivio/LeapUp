@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Manages the creation and movement of platforms vertically to follow the player Y.
 /// </summary>
-public class PlatformsManager : EndlessManager
+public class YManager : EndlessManager
 {
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class PlatformsManager : EndlessManager
     /// <returns>The new platformManager object.</returns>
     protected override GameObject AfterCreateBlock(GameObject newObj)
     {
-        BlocksManager bm = newObj.GetComponent<BlocksManager>();
+        XManager bm = newObj.GetComponent<XManager>();
 
         float posAxis = bm.transform.position[axis];
         bm.SetHeight(posAxis);
@@ -34,7 +34,7 @@ public class PlatformsManager : EndlessManager
     /// <param name="direction">The direction the floor should be moved.</param>
     protected override GameObject AfterMoveBlock(GameObject newObj)
     {
-        BlocksManager bm = newObj.GetComponent<BlocksManager>();
+        XManager bm = newObj.GetComponent<XManager>();
 
         float newY = newObj.transform.position[axis];
         bm.SetHeight(newY);

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 238374578292241966}
   - component: {fileID: 1878402496}
   m_Layer: 6
-  m_Name: PrefGroundPrefab
+  m_Name: PrefGround
   m_TagString: GroundPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 64, y: 1}
+  m_Size: {x: 32, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +103,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 64, y: 1}
+    newSize: {x: 32, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0

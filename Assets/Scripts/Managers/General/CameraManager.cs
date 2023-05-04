@@ -8,10 +8,25 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     const int INITIAL_Z = -10;
+    private Vector3 initialPosition;
+
+    void Start()
+    {
+        initialPosition = transform.position;
+
+        // Subscribe to the events
+        GameManager.GameStart += GameStart;
+    }
 
     private void FixedUpdate()
     {
         Vector3 playerPos = GameManager.Player.transform.position;
-        transform.position = new Vector3(playerPos.x, playerPos.y, INITIAL_Z);
+        if (playerPos.y < transform.position.y) return;
+        transform.position = new Vector3(0, playerPos.y, INITIAL_Z);
+    }
+
+    void GameStart()
+    {
+        transform.position = initialPosition;
     }
 }

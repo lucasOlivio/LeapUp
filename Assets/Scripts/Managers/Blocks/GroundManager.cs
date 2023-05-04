@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class GroundManager : MonoBehaviour
 {
+    public GameObject cameraObj; // Camera to follow Y;
     public GameObject groundPrefab; // Ground object to manage
     public Sprite groundBlockSprite; // Sprite referencing the normal ground
     public Sprite deathBlockSprite; // Sprite for the ground where player dies if touches
+
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     [SerializeField] private float incrementAmount;   // The amount to increment the Y position per second
     private Vector3 initialPosition;
+    private const float DISTANCE_CAMERA = 6.5f; // Minimum distance Y to mantain from camera
 
     // Start is called before the first frame update
     void Start()
@@ -27,36 +30,35 @@ public class GroundManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        FollowXPlayer();
-    }
+    { }
 
     private void FixedUpdate()
     {
-        if(GameManager.isPlayable()) // If not playable, don't allow to move
-            IncreaseY();
+        IncreaseY();
     }
 
-    void FollowXPlayer() {
-        float playerX = GameManager.Player.transform.position.x;
-
-        Vector3 pos = groundPrefab.transform.position;
-        pos.x = playerX;
-        groundPrefab.transform.position = pos;
+    void IncreaseY()
+    {
+        float currentDistance = cameraObj.transform.position.y - transform.position.y;
+        if (currentDistance > DISTANCE_CAMERA)
+        {
+            float y = currentDistance - DISTANCE_CAMERA;
+            GameUtils.ChangePosition(this.gameObject, y, 1);
+        }
+        else if (GameManager.state == GameManager.GameStates.Playing)
+        {
+            GameUtils.ChangePosition(this.gameObject, (incrementAmount * Time.fixedDeltaTime), 1);
+        }
     }
 
-    void IncreaseY() {
-        if(GameManager.state != GameManager.GameStates.Playing) return;
-
-        GameUtils.ChangePosition(this.gameObject, (incrementAmount * Time.fixedDeltaTime), 1);
-    }
-
-    void PlayerStart() {
+    void PlayerStart()
+    {
         // Change the sprite to the death block
         spriteRenderer.sprite = deathBlockSprite;
     }
 
-    void GameStart() {
+    void GameStart()
+    {
         transform.position = initialPosition;
         // Change the sprite to the ground block
         spriteRenderer.sprite = groundBlockSprite;

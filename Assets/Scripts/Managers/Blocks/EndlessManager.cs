@@ -114,8 +114,8 @@ public class EndlessManager : MonoBehaviour
         for (int nBlock = 1; nBlock <= nBlocks; nBlock++)
         {
             float posAxis = getPosForBlock(nBlock);
-            GameObject pm = CreateBlock(posAxis);
-            Insert(pm);
+            GameObject obj = CreateBlock(posAxis);
+            Insert(obj);
         }
         center = GameManager.Player.transform.position[axis];
         created = true;
@@ -147,6 +147,7 @@ public class EndlessManager : MonoBehaviour
         GameObject obj = null;
         Vector3 lastPos;
 
+        // Get the back end of the list depending on the direction player is going
         if (direction == 1)
         {
             obj = head.obj;
@@ -162,9 +163,18 @@ public class EndlessManager : MonoBehaviour
             throw new System.Exception("Wrong direction, must be 1 or -1!");
         }
 
+        // Change the position in the axis accordingly
         float deltaChange = (spacing * direction) + lastPos[axis] - obj.transform.position[axis];
         GameUtils.ChangePosition(obj, deltaChange, axis);
         UpdateCenter(direction);
+
+        // Update the Block initial position
+        BlockManager bm = obj.GetComponent<BlockManager>();
+        if (bm != null)
+        {
+            bm.UpdateInitialPosition();
+        }
+
 
         return AfterMoveBlock(obj);
     }

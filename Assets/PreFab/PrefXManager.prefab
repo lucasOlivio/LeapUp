@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 647056446596747536}
   - component: {fileID: 647056446596747537}
   m_Layer: 0
-  m_Name: PrefBlockManager
+  m_Name: PrefXManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spacing: 10
-  nBlocks: 8
+  width: 2
+  nBlocks: 6
   blockPrefab: {fileID: 4962690264103602077, guid: 0f2cda44a1413bf409bdae0fa47c1140, type: 3}
   offset: 3
-  width: 2

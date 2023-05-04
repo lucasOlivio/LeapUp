@@ -20,9 +20,12 @@ public class PlayerController : MonoBehaviour
 
     // Components
     private Rigidbody2D _rb;
+    private FixedJoint2D fixedJoint;
 
     private void Start()
     {
+        fixedJoint = GetComponent<FixedJoint2D>();
+
         _rb = GetComponent<Rigidbody2D>();
         initialPosition = transform.position;
         highScore = 0;
@@ -53,7 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateGroundedState(collision);
 
-        if (collision.gameObject.CompareTag("GroundPrefab") && GameManager.state == GameManager.GameStates.Playing)
+        if (collision.gameObject.CompareTag("Ground") && GameManager.state == GameManager.GameStates.Playing)
         {
             GameManager.FireGameOverEvent();
         }

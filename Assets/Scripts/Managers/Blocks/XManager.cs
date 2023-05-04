@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Manages the creation and movement of blocks horizontally to follow the player X.
 /// </summary>
-public class BlocksManager : EndlessManager
+public class XManager : EndlessManager
 {
     public float offset = 0; // Deslocate the platform in the X axis
 
