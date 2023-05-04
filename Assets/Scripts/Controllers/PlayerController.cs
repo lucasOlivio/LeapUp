@@ -3,8 +3,8 @@ using UnityEngine;
 /// <summary>
 /// Controls the movement and physics of the player character.
 /// </summary>
-public class Player : MonoBehaviour
-{   
+public class PlayerController : MonoBehaviour
+{
     // UI
     public int highScore = 0;
 
@@ -26,14 +26,14 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         initialPosition = transform.position;
         highScore = 0;
-        
+
         // Subscribe to the events
         GameManager.GameStart += GameStart;
     }
 
     private void Update()
     {
-        if(GameManager.isPlayable()) // If not playable, don't allow to move
+        if (GameManager.isPlayable()) // If not playable, don't allow to move
             HandleInput();
 
         HighScore();
@@ -43,7 +43,8 @@ public class Player : MonoBehaviour
     {
         ApplyGravity();
 
-        if(transform.position.y > startHeight && GameManager.state == GameManager.GameStates.MainMenu) {
+        if (transform.position.y > startHeight && GameManager.state == GameManager.GameStates.MainMenu)
+        {
             GameManager.FirePlayerStartEvent();
         }
     }
@@ -122,7 +123,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    void GameStart() {
+    void GameStart()
+    {
         transform.position = initialPosition;
         highScore = 0;
     }

@@ -5,21 +5,22 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    Player player;
+    PlayerController playerController;
     TextMeshProUGUI heightText;
     TextMeshProUGUI finalScoreText;
     private static GameObject gameOverScreen;
     private static GameObject mainMenuScreen;
 
-    private void Awake() {
-        player = GameObject.Find("Player").GetComponent<Player>();
+    private void Awake()
+    {
         heightText = GameObject.Find("HeightText").GetComponent<TextMeshProUGUI>();
         finalScoreText = GameUtils.FindNestedGameObject("Canvas", "FinalScoreText").GetComponent<TextMeshProUGUI>();
     }
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        playerController = GameManager.Player.GetComponent<PlayerController>();
         gameOverScreen = GameUtils.FindNestedGameObject("Canvas", "GameOverScreen");
         mainMenuScreen = GameUtils.FindNestedGameObject("Canvas", "MainMenuScreen");
 
@@ -37,7 +38,7 @@ public class UIController : MonoBehaviour
 
     void GameOver()
     {
-        finalScoreText.text = player.highScore + " m";
+        finalScoreText.text = playerController.highScore + " m";
 
         gameOverScreen.SetActive(true);
     }
@@ -53,11 +54,13 @@ public class UIController : MonoBehaviour
         mainMenuScreen.SetActive(false);
     }
 
-    void UpdateHighScore() {
-        heightText.text = player.highScore + " m";
+    void UpdateHighScore()
+    {
+        heightText.text = playerController.highScore + " m";
     }
 
-    public void RestartButton() {
+    public void RestartButton()
+    {
         GameManager.FireGameStartEvent();
     }
 }
