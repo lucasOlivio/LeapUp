@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIController : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    PlayerController playerController;
     TextMeshProUGUI heightText;
+    PlayerController playerController;
+
     TextMeshProUGUI finalScoreText;
     private static GameObject gameOverScreen;
     private static GameObject mainMenuScreen;

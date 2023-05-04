@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A script that controls the camera's movement and position in the game world.
 /// </summary>
-public class CameraScript : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
     const int INITIAL_Z = -10;
 

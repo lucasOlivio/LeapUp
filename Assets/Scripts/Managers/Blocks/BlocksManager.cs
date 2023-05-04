@@ -36,12 +36,11 @@ public class BlocksManager : EndlessManager
         if (tail == null)
             return;
 
-        float deltaHeight = newHeight - tail.obj.transform.position.y;
+        Block currentBlock = tail;
+        float deltaHeight = newHeight - currentBlock.obj.transform.position.y;
 
         if (deltaHeight == 0)
             return;
-
-        Block currentBlock = tail;
 
         while (currentBlock != null)
         {

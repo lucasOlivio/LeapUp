@@ -36,20 +36,20 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Managers\BlocksManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\Blocks\BlocksManager.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\CustomExceptions\GameObjectNotFoundException.cs" />
-     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\PlatformsManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\General\UIManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\Blocks\PlatformsManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\General\GameManager.cs" />
      <Compile Include="Assets\Scripts\Settings\GameUtils.cs" />
-     <Compile Include="Assets\Scripts\Managers\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\General\CameraManager.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-     <Compile Include="Assets\Scripts\Managers\EndlessManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\CameraScript_basic_follow.cs" />
+     <Compile Include="Assets\Scripts\Managers\Blocks\EndlessManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\General\CameraScript_basic_follow.cs" />
      <Compile Include="Assets\Scripts\Controllers\Player_basic_movement.cs" />
      <Compile Include="Assets\Scripts\Controllers\Player_basic_movements_rigidbody.cs" />
-     <Compile Include="Assets\Scripts\Managers\GroundManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\Blocks\GroundManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
