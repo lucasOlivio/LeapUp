@@ -61,7 +61,7 @@ public class EndlessManager : MonoBehaviour
     /// <returns>The "axis" position for the platform.</returns>
     protected virtual float getPosForBlock(int nBlock)
     {
-        int playerPosition = (int)GameManager.Player.transform.position[axis];
+        float playerPosition = GameManager.Player.transform.position[axis];
 
         return playerPosition + (nBlock * spacing) - center + (spacing / 2);
     }

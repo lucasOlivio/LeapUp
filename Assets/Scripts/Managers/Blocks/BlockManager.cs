@@ -24,7 +24,7 @@ public class BlockManager : MonoBehaviour
     private void FixedUpdate()
     {
         // MoveBlockX();
-        MoveBlockY();
+        // MoveBlockY();
         // BlinkBlock();
     }
 

@@ -79,19 +79,23 @@ public class GameManager : MonoBehaviour
     }
 
     // Check if the actual state of the game is playable
-    public static bool isPlayable() {
+    public static bool isPlayable()
+    {
         return playable.Contains(_state);
     }
 
-    private static void GameStartSetup() {
+    private static void GameStartSetup()
+    {
         _state = GameStates.MainMenu;
     }
 
-    private static void PlayerStartSetup() {
+    private static void PlayerStartSetup()
+    {
         _state = GameStates.Playing;
     }
 
-    private static void GameOverSetup() {
+    private static void GameOverSetup()
+    {
         _state = GameStates.GameOver;
     }
 }
