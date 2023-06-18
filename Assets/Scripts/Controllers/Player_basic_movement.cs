@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_basic : MonoBehaviour
 {
     // UI
-    public int highScore = 0;
+    public int score = 0;
 
     // Jump movement
     public float jumpForce = 10f; // The force with which the player jumps
@@ -33,13 +33,15 @@ public class Player_basic : MonoBehaviour
         CheckJump();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         Jump();
         Walk();
-        HighScore();
+        UpdateScore();
     }
 
-    void Walk() {
+    void Walk()
+    {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         Vector2 pos = transform.position;
 
@@ -49,40 +51,48 @@ public class Player_basic : MonoBehaviour
         transform.position = pos;
     }
 
-    void CheckJump() {
-        if(_isGrounded) {
-            if(Input.GetKeyDown(KeyCode.Space)) {
+    void CheckJump()
+    {
+        if (_isGrounded)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
                 _isGrounded = false;
                 _isHoldingJump = true;
                 _velocity.y = jumpForce;
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.Space)) {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
             _isHoldingJump = false;
         }
     }
 
-    void Jump() {
+    void Jump()
+    {
         Vector2 pos = transform.position;
 
-        if(_isGrounded)
+        if (_isGrounded)
             return;
 
-        if(_isHoldingJump) {
+        if (_isHoldingJump)
+        {
             _jumpTimer += Time.fixedDeltaTime;
-            if (_jumpTimer >= maxHoldJumpTime) {
+            if (_jumpTimer >= maxHoldJumpTime)
+            {
                 _isHoldingJump = false;
             }
         }
 
         pos.y += _velocity.y * Time.fixedDeltaTime;
 
-        if(!_isHoldingJump) 
+        if (!_isHoldingJump)
             _velocity.y += gravity * Time.fixedDeltaTime;
-        
+
         // Ground check
-        if(pos.y <= _groundHeight) {
+        if (pos.y <= _groundHeight)
+        {
             pos.y = _groundHeight;
             _isGrounded = true;
             _jumpTimer = .0f;
@@ -91,10 +101,11 @@ public class Player_basic : MonoBehaviour
         transform.position = pos;
     }
 
-    void HighScore() {
+    void UpdateScore()
+    {
         float playerY = transform.position.y;
 
-        if(playerY > highScore)
-            highScore = (int)playerY;
+        if (playerY > score)
+            score = (int)playerY;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -9,8 +10,11 @@ public class EndlessManager : MonoBehaviour
 {
     public int spacing; // Space between the blocks
     public int width; // The width for each unit of block
-    public int nBlocks; // Number of blocks total
+    public float area; // Area in which the player must be
     public GameObject blockPrefab; // Prefab for the block object
+
+    [SerializeField] protected int axis = -1; // In which axis the movement will occur (0 - x; 1 - y; 2 - z)
+    private int[] validAxis = { 0, 1, 2 };
 
     // Inner class for managing each individual block
     protected class Block
@@ -29,68 +33,46 @@ public class EndlessManager : MonoBehaviour
 
     protected Block head; // Reference to the first block in the list
     protected Block tail; // Reference to the last block in the list
+
     protected bool created = false; // Check if all the blocks were created
-    protected int axis = -1; // In which axis the movement will occur (0 - x; 1 - y; 2 - z)
-    protected float currentPlayerPos; // Current player position
-    protected float center; // The center of the area where the player should be
+    protected int currentPlayerPos; // Current player position
+    protected float centerPos; // The center of the area where the player should be
+
+    // Total width for the block including the spacing
+    public int BlockTotalWidth()
+    {
+        return width + spacing;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (axis != 0 && axis != 1 && axis != 2)
+        if (!validAxis.Contains(axis))
             throw new System.InvalidOperationException("Wrong axis!");
 
-        head = null;
-        tail = null;
-        center = ((nBlocks) * (width + spacing)) / 2;
-
+        UpdatePlayerCurrentAxisPosition();
         CreateInitialBlocks();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdatePlayerCurrentAxisPosition();
         if (created && GameManager.isPlayable())
             MoveBlocks();
     }
 
-    /// <summary>
-    /// Calculates the position for the platform at the specified index.
-    /// </summary>
-    /// <param name="nBlock">The index of the block.</param>
-    /// <returns>The "axis" position for the platform.</returns>
-    protected virtual float getPosForBlock(int nBlock)
+    // Set the player current position in "axis"
+    protected void UpdatePlayerCurrentAxisPosition()
     {
-        float playerPosition = GameManager.Player.transform.position[axis];
-
-        return playerPosition + (nBlock * spacing) - center + (spacing / 2);
-    }
-
-    protected virtual GameObject AfterCreateBlock(GameObject newBlock)
-    {
-        return newBlock;
-    }
-
-    /// <summary>
-    /// Instantiates a block object at the specified position.
-    /// </summary>
-    /// <param name="position">The position the new block will be in the given axis.</param>
-    /// <returns>The new platformManager object.</returns>
-    protected GameObject CreateBlock(float position)
-    {
-        GameObject newBlock = Instantiate(blockPrefab);
-
-        // Dinamically changes the block positioning
-        GameUtils.ChangePosition(newBlock, position, axis);
-
-        return AfterCreateBlock(newBlock);
+        currentPlayerPos = (int)GameManager.GetPlayerPosition()[axis];
     }
 
     /// <summary>
     /// Inserts a Block object into the linked list.
     /// </summary>
     /// <param name="obj">The new Block to be inserted on the list at the head.</param>
-    void Insert(GameObject obj)
+    void InsertOnList(GameObject obj)
     {
         Block floor = new Block(obj);
         if (head == null)
@@ -106,43 +88,36 @@ public class EndlessManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Creates the initial blocks by instantiating gameobjects with its respective "axis"
-    /// and inserting them into the linked list.
+    /// Creates the initial blocks by instantiating gameobjects with its respective "axis".
     /// </summary>
     void CreateInitialBlocks()
     {
-        for (int nBlock = 1; nBlock <= nBlocks; nBlock++)
+        Transform[] children = GameUtils.GetOrderedChildren(transform);
+        for (int i = 0; i < children.Length; i++)
         {
-            float posAxis = getPosForBlock(nBlock);
-            GameObject obj = CreateBlock(posAxis);
-            Insert(obj);
+            InsertOnList(children[i].gameObject);
         }
-        center = GameManager.Player.transform.position[axis];
         created = true;
     }
 
     /// <summary>
-    /// Update the center of the blocks, using the head and tail as reference
+    /// Update the center of the blocks, using the head and tail as reference.
+    /// For block move can't use the player position, because it can be too uncertain
     /// </summary>
-    void UpdateCenter(int direction)
+    void UpdateCenter()
     {
         Vector3 headPosition = head.obj.transform.position;
         Vector3 tailPosition = tail.obj.transform.position;
         float middle = System.Math.Abs(headPosition[axis] - tailPosition[axis]) / 2;
 
-        center = middle + tailPosition[axis];
-    }
-
-    protected virtual GameObject AfterMoveBlock(GameObject newObj)
-    {
-        return newObj;
+        centerPos = middle + tailPosition[axis];
     }
 
     /// <summary>
     /// Move the block, up or down, left or right, to the ends of the list depending on the direction to move.
     /// </summary>
     /// <param name="direction">The direction the block should be moved.</param>
-    protected virtual GameObject MoveBlock(int direction)
+    protected virtual void MoveBlock(int direction)
     {
         GameObject obj = null;
         Vector3 lastPos;
@@ -163,10 +138,14 @@ public class EndlessManager : MonoBehaviour
             throw new System.Exception("Wrong direction, must be 1 or -1!");
         }
 
+        Debug.Log($"OBJ POS {axis}: {obj.transform.position[axis]}");
+        Debug.Log($"LASTOBJ POS {axis}: {lastPos[axis]}");
+        Debug.Log($"CALC POS {axis}: {(BlockTotalWidth() * direction) + lastPos[axis] - obj.transform.position[axis]}");
+
         // Change the position in the axis accordingly
-        float deltaChange = (spacing * direction) + lastPos[axis] - obj.transform.position[axis];
+        float deltaChange = (BlockTotalWidth() * direction) + lastPos[axis] - obj.transform.position[axis];
         GameUtils.ChangePosition(obj, deltaChange, axis);
-        UpdateCenter(direction);
+        UpdateCenter();
 
         // Update the Block initial position
         BlockManager bm = obj.GetComponent<BlockManager>();
@@ -174,9 +153,6 @@ public class EndlessManager : MonoBehaviour
         {
             bm.UpdateInitialPosition();
         }
-
-
-        return AfterMoveBlock(obj);
     }
 
     /// <summary>
@@ -224,15 +200,19 @@ public class EndlessManager : MonoBehaviour
     /// </summary>
     void MoveBlocks()
     {
-        currentPlayerPos = (int)GameManager.Player.transform.position[axis];
-        float area = width * 2; // Area in which the player must be
-
-        if (head == null)
+        if (!created)
             return;
 
-        if (currentPlayerPos < center - area)
+        Debug.Log($"{axis} MOVING FORWARD");
+        if (currentPlayerPos < centerPos - area)
+        {
+            Debug.Log($"{axis} MOVING BACKWARDS");
             GoBackwards();
-        else if (currentPlayerPos > center + area)
+        }
+        else if (currentPlayerPos > centerPos + area)
+        {
+            Debug.Log($"{axis} MOVING FORWARD");
             GoForwards();
+        }
     }
 }

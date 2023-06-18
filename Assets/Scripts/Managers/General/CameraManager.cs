@@ -20,7 +20,7 @@ public class CameraManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 playerPos = GameManager.Player.transform.position;
+        Vector3 playerPos = GameManager.GetPlayerPosition();
         if (playerPos.y < transform.position.y) return;
         transform.position = new Vector3(0, playerPos.y, INITIAL_Z);
     }

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    TextMeshProUGUI heightText;
-    PlayerController playerController;
+    TextMeshProUGUI scoreText;
 
     TextMeshProUGUI finalScoreText;
     private static GameObject gameOverScreen;
@@ -14,14 +13,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        heightText = GameObject.Find("HeightText").GetComponent<TextMeshProUGUI>();
+        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         finalScoreText = GameUtils.FindNestedGameObject("Canvas", "FinalScoreText").GetComponent<TextMeshProUGUI>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GameManager.Player.GetComponent<PlayerController>();
         gameOverScreen = GameUtils.FindNestedGameObject("Canvas", "GameOverScreen");
         mainMenuScreen = GameUtils.FindNestedGameObject("Canvas", "MainMenuScreen");
 
@@ -34,12 +32,17 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHighScore();
+        UpdateScoreUI();
+    }
+
+    string ScoreText()
+    {
+        return GameManager.GetPlayerScore() + " m";
     }
 
     void GameOver()
     {
-        finalScoreText.text = playerController.highScore + " m";
+        finalScoreText.text = ScoreText();
 
         gameOverScreen.SetActive(true);
     }
@@ -55,9 +58,9 @@ public class UIManager : MonoBehaviour
         mainMenuScreen.SetActive(false);
     }
 
-    void UpdateHighScore()
+    void UpdateScoreUI()
     {
-        heightText.text = playerController.highScore + " m";
+        scoreText.text = ScoreText();
     }
 
     public void RestartButton()

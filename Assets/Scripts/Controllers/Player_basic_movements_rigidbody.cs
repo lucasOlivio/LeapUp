@@ -4,9 +4,9 @@ using UnityEngine;
 /// Controls the movement and physics of the player character.
 /// </summary>
 public class Player_basic_rigid_body : MonoBehaviour
-{   
+{
     // UI
-    public int highScore = 0;
+    public int score = 0;
 
     // Movement
     public float moveSpeed = 25f;
@@ -33,7 +33,7 @@ public class Player_basic_rigid_body : MonoBehaviour
 
         Move();
 
-        HighScore();
+        UpdateScore();
     }
 
     private void FixedUpdate()
@@ -80,13 +80,13 @@ public class Player_basic_rigid_body : MonoBehaviour
     /// <summary>
     /// Updates the player's high score.
     /// </summary>
-    private void HighScore()
+    private void UpdateScore()
     {
         float playerY = transform.position.y;
 
-        if (playerY > highScore)
+        if (playerY > score)
         {
-            highScore = (int)playerY;
+            score = (int)playerY;
         }
     }
 }

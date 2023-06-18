@@ -7,46 +7,35 @@ using UnityEngine;
 /// </summary>
 public class XManager : EndlessManager
 {
-    public float offset = 0; // Deslocate the platform in the X axis
+    // public float offset = 0; // Deslocate the platform in the X axis
 
-    private void Awake()
-    {
-        axis = 0;
-    }
+    // // protected override GameObject AfterCreateBlock(GameObject newBlock)
+    // // {
+    // //     GameUtils.ChangeSize(newBlock, width, axis);
+    // //     GameUtils.ChangePosition(newBlock, transform.position.y, 1);
 
-    protected override GameObject AfterCreateBlock(GameObject newObj)
-    {
-        GameUtils.ChangeSize(newObj, width, axis);
-        GameUtils.ChangePosition(newObj, transform.position.y, 1);
+    // //     return newBlock;
+    // // }
 
-        return newObj;
-    }
+    // /// <summary>
+    // /// Sets the new height for all of the platform blocks.
+    // /// </summary>
+    // /// <param name="newHeight">The new height for the platform.</param>
+    // public void SetHeight(float newHeight)
+    // {
+    //     if (tail == null)
+    //         return;
 
-    protected override float getPosForBlock(int nBlock)
-    {
-        return base.getPosForBlock(nBlock) + offset;
-    }
+    //     Block currentBlock = tail;
+    //     float deltaHeight = newHeight - currentBlock.obj.transform.position.y;
 
-    /// <summary>
-    /// Sets the new height for all of the platform blocks.
-    /// </summary>
-    /// <param name="newHeight">The new height for the platform.</param>
-    public void SetHeight(float newHeight)
-    {
-        if (tail == null)
-            return;
+    //     if (deltaHeight == 0)
+    //         return;
 
-        Block currentBlock = tail;
-        float deltaHeight = newHeight - currentBlock.obj.transform.position.y;
-
-        if (deltaHeight == 0)
-            return;
-
-        while (currentBlock != null)
-        {
-            GameUtils.ChangePosition(currentBlock.obj, deltaHeight, 1);
-            currentBlock = currentBlock.next;
-        }
-    }
-
+    //     while (currentBlock != null)
+    //     {
+    //         GameUtils.ChangePosition(currentBlock.obj, deltaHeight, 1);
+    //         currentBlock = currentBlock.next;
+    //     }
+    // }
 }

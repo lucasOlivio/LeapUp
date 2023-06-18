@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameObject Player { get; private set; }
-
     // Define game events delegates
     public delegate void GameStartDelegate();
     public delegate void PlayerStartDelegate();
@@ -25,6 +23,7 @@ public class GameManager : MonoBehaviour
     }
     public static List<GameStates> playable = new List<GameStates> { GameStates.MainMenu, GameStates.Playing };
     private static GameStates _state;
+    private static GameObject Player;
 
     // Public getter for the state variable
     public static GameStates state
@@ -42,6 +41,18 @@ public class GameManager : MonoBehaviour
         }
 
         GameStartSetup();
+    }
+
+    // Returns the current player position
+    public static Vector3 GetPlayerPosition()
+    {
+        return Player.transform.position;
+    }
+
+    // Return the players current score
+    public static int GetPlayerScore()
+    {
+        return Player.GetComponent<PlayerController>().score;
     }
 
     // Methods to fire the respectives events

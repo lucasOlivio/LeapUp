@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // UI
-    public int highScore = 0;
+    public int score = 0;
 
     // Movement
     public float moveSpeed = 18f;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         _rb = GetComponent<Rigidbody2D>();
         initialPosition = transform.position;
-        highScore = 0;
+        score = 0;
 
         // Subscribe to the events
         GameManager.GameStart += GameStart;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         if (GameManager.isPlayable()) // If not playable, don't allow to move
             HandleInput();
 
-        HighScore();
+        UpdateScore();
     }
 
     private void FixedUpdate()
@@ -116,19 +116,19 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Updates the player's high score based on their current y position.
     /// </summary>
-    private void HighScore()
+    private void UpdateScore()
     {
         float playerY = transform.position.y;
 
-        if (playerY > highScore)
+        if (playerY > score)
         {
-            highScore = (int)playerY;
+            score = (int)playerY;
         }
     }
 
     void GameStart()
     {
         transform.position = initialPosition;
-        highScore = 0;
+        score = 0;
     }
 }

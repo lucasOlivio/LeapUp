@@ -83,4 +83,47 @@ public static class GameUtils
         throw new GameObjectNotFoundException($"Could not find GameObject with name '{targetObjectName}'");
     }
 
+    /// <summary>
+    /// Iterates over every child element in the order of their "axis" position.
+    /// </summary>
+    public static Transform[] GetOrderedChildren(Transform parentTransform)
+    {
+        int childCount = parentTransform.childCount;
+
+        // Create an array to store child transforms
+        Transform[] children = new Transform[childCount];
+
+        // Populate the array with child transforms
+        for (int i = 0; i < childCount; i++)
+        {
+            children[i] = parentTransform.GetChild(i);
+        }
+
+        // Sort the children array based on their axis position
+        System.Array.Sort(children, CompareAxisPosition);
+
+        return children;
+    }
+
+    /// <summary>
+    /// Comparison function to sort transforms based on their axis position.
+    /// </summary>
+    /// <param name="a">The first transform to compare.</param>
+    /// <param name="b">The second transform to compare.</param>
+    /// <returns>
+    /// -1 if <paramref name="a"/> has a smaller "axis" position than <paramref name="b"/>,
+    /// 1 if <paramref name="a"/> has a larger "axis" position than <paramref name="b"/>,
+    /// 0 if <paramref name="a"/> and <paramref name="b"/> have the same "axis" position.
+    /// </returns>
+    public static int CompareAxisPosition(Transform a, Transform b)
+    {
+        // Compare the axis positions of two transforms
+        if (a.position.x < b.position.x)
+            return -1;
+        else if (a.position.x > b.position.x)
+            return 1;
+        else
+            return 0;
+    }
+
 }
