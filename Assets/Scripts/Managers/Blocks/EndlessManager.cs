@@ -141,13 +141,6 @@ public class EndlessManager : MonoBehaviour
         float deltaChange = (BlockTotalWidth() * direction) + lastPos[axis] - obj.transform.position[axis];
         GameUtils.ChangePosition(obj, deltaChange, axis);
         UpdateCenter();
-
-        // Update the Block initial position
-        BlockManager bm = obj.GetComponent<BlockManager>();
-        if (bm != null)
-        {
-            bm.UpdateInitialPosition();
-        }
     }
 
     /// <summary>

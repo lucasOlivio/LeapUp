@@ -31,5 +31,6 @@
   "csharp.referencesCodeLens.enabled": true,
   "csharp.semanticHighlighting.enabled": true,
   "omnisharp.enableMSBuildLoadProjectsOnDemand": true,
-  "omnisharp.path": "latest"
+  "omnisharp.path": "latest",
+  "dotnet.defaultSolution": "LeapUp.sln"
 }

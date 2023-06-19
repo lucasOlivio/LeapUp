@@ -126,8 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockSpeed: 2
-  rangeX: 2
-  rangeY: 1
+  rangesMove: 0200000001000000
   blinkTime: 1
 --- !u!50 &-6467641848845157318
 Rigidbody2D:

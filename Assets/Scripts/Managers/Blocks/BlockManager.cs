@@ -3,91 +3,81 @@ using UnityEngine;
 public class BlockManager : MonoBehaviour
 {
     [SerializeField] private float blockSpeed = 1f;
-    [SerializeField] private float rangeX = 2f;
-    [SerializeField] private float rangeY = 1f;
+    [SerializeField] private int[] rangesMove;
     [SerializeField] private float blinkTime = 1f;
 
-    private bool isMovingRight;
-    private bool isMovingUp;
+    private int[] directionMove;
     private bool isBlockActive;
     private Vector3 initialPosition;
     private float elapsedTime;
 
+    private Collider2D objCollider;
+    private SpriteRenderer sprite;
+
     private void Start()
     {
-        initialPosition = transform.position;
-        isMovingRight = true;
+        initialPosition = transform.localPosition;
+        directionMove = new int[2] { 1, 1 };
         isBlockActive = true;
         elapsedTime = 0f;
+        objCollider = GetComponent<Collider2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
         // MoveBlockX();
         // MoveBlockY();
-        // BlinkBlock();
+        BlinkBlock();
     }
 
-    public void UpdateInitialPosition()
+    /// <summary>
+    /// Moves the block along a specified axis relative to its parent's coordinate system, forwards and backwards.
+    /// </summary>
+    /// <param name="axis">The index of the axis to move the block on.</param>
+    private void MoveBlock(int axis)
     {
-        initialPosition = transform.position;
+        Vector3 position = transform.localPosition;
+        float positionAxis = position[axis];
+        float initialPosAxis = initialPosition[axis];
+        float rangeAxis = rangesMove[axis];
+        int direction = directionMove[axis];
+
+        positionAxis += direction * (blockSpeed * Time.fixedDeltaTime);
+        if (positionAxis >= initialPosAxis + rangeAxis)
+            direction = -1;
+        else if (positionAxis <= initialPosAxis - rangeAxis)
+            direction = 1;
+
+        directionMove[axis] = direction;
+        position[axis] = positionAxis;
+        transform.localPosition = position;
     }
 
     private void MoveBlockX()
     {
-        Vector3 position = transform.position;
-        int direction = -1;
-        if (isMovingRight)
-            direction = 1;
-
-        position.x += direction * (blockSpeed * Time.fixedDeltaTime);
-        if (position.x >= initialPosition.x + rangeX)
-            isMovingRight = false;
-        if (position.x <= initialPosition.x - rangeX)
-            isMovingRight = true;
-
-        transform.position = position;
+        MoveBlock(0);
     }
 
     private void MoveBlockY()
     {
-        Vector3 position = transform.position;
-        int direction = -1;
-        if (isMovingUp)
-            direction = 1;
-
-        position.y += direction * (blockSpeed * Time.fixedDeltaTime);
-        if (position.y >= initialPosition.y + rangeY)
-            isMovingUp = false;
-        if (position.y <= initialPosition.y - rangeY)
-            isMovingUp = true;
-
-        transform.position = position;
+        MoveBlock(1);
     }
 
     private void BlinkBlock()
     {
-        if (!isBlockActive)
-        {
-            elapsedTime += Time.fixedDeltaTime;
+        elapsedTime += Time.fixedDeltaTime;
 
-            if (elapsedTime >= blinkTime)
-            {
-                isBlockActive = true;
-                elapsedTime = 0f;
-                gameObject.SetActive(true);
-            }
-        }
-        else
+        if (elapsedTime >= blinkTime)
         {
-            elapsedTime += Time.fixedDeltaTime;
+            isBlockActive = !isBlockActive;
+            elapsedTime = 0f;
 
-            if (elapsedTime >= blinkTime)
-            {
-                isBlockActive = false;
-                elapsedTime = 0f;
-                gameObject.SetActive(false);
-            }
+            // Disable collisions
+            objCollider.enabled = isBlockActive;
+
+            // Hide the sprite
+            sprite.enabled = isBlockActive;
         }
     }
 
