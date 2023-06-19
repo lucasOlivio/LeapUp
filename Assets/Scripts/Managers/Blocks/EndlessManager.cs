@@ -88,14 +88,13 @@ public class EndlessManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Creates the initial blocks by instantiating gameobjects with its respective "axis".
+    /// Creates the initial linked list with the children of the transform.
     /// </summary>
     void CreateInitialBlocks()
     {
-        Transform[] children = GameUtils.GetOrderedChildren(transform);
-        for (int i = 0; i < children.Length; i++)
+        foreach (Transform childTransform in transform)
         {
-            InsertOnList(children[i].gameObject);
+            InsertOnList(childTransform.gameObject);
         }
         created = true;
     }
@@ -137,10 +136,6 @@ public class EndlessManager : MonoBehaviour
         {
             throw new System.Exception("Wrong direction, must be 1 or -1!");
         }
-
-        Debug.Log($"OBJ POS {axis}: {obj.transform.position[axis]}");
-        Debug.Log($"LASTOBJ POS {axis}: {lastPos[axis]}");
-        Debug.Log($"CALC POS {axis}: {(BlockTotalWidth() * direction) + lastPos[axis] - obj.transform.position[axis]}");
 
         // Change the position in the axis accordingly
         float deltaChange = (BlockTotalWidth() * direction) + lastPos[axis] - obj.transform.position[axis];
@@ -203,15 +198,12 @@ public class EndlessManager : MonoBehaviour
         if (!created)
             return;
 
-        Debug.Log($"{axis} MOVING FORWARD");
         if (currentPlayerPos < centerPos - area)
         {
-            Debug.Log($"{axis} MOVING BACKWARDS");
             GoBackwards();
         }
         else if (currentPlayerPos > centerPos + area)
         {
-            Debug.Log($"{axis} MOVING FORWARD");
             GoForwards();
         }
     }
