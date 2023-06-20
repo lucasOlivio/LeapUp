@@ -4,16 +4,6 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    // Define game events delegates
-    public delegate void GameStartDelegate();
-    public delegate void PlayerStartDelegate();
-    public delegate void GameOverDelegate();
-
-    // Define the events
-    public static event GameStartDelegate GameStart;
-    public static event PlayerStartDelegate PlayerStart;
-    public static event GameOverDelegate GameOver;
-
     public enum GameStates
     {
         MainMenu,       // The game is in the main menu
@@ -40,7 +30,9 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Player not found in the scene!");
         }
 
-        GameStartSetup();
+        EventManager.GameStart += GameStartSetup;
+        EventManager.PlayerStart += PlayerStartSetup;
+        EventManager.GameOver += GameOverSetup;
     }
 
     // Returns the current player position
@@ -55,39 +47,7 @@ public class GameManager : MonoBehaviour
         return Player.GetComponent<PlayerController>().score;
     }
 
-    // Methods to fire the respectives events
-    public static void FireGameStartEvent()
-    {
-        // Check if there are any subscribers to the event
-        if (GameStart != null)
-        {
-            // Fire the event, which will notify all subscribers
-            GameStart();
-        }
-        GameStartSetup();
-    }
 
-    public static void FirePlayerStartEvent()
-    {
-        // Check if there are any subscribers to the event
-        if (PlayerStart != null)
-        {
-            // Fire the event, which will notify all subscribers
-            PlayerStart();
-        }
-        PlayerStartSetup();
-    }
-
-    public static void FireGameOverEvent()
-    {
-        // Check if there are any subscribers to the event
-        if (GameOver != null)
-        {
-            // Fire the event, which will notify all subscribers
-            GameOver();
-        }
-        GameOverSetup();
-    }
 
     // Check if the actual state of the game is playable
     public static bool isPlayable()

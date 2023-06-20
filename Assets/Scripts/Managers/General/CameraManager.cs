@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
         initialPosition = transform.position;
 
         // Subscribe to the events
-        GameManager.GameStart += GameStart;
+        EventManager.GameStart += GameStart;
     }
 
     private void FixedUpdate()

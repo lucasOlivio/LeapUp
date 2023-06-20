@@ -24,9 +24,9 @@ public class UIManager : MonoBehaviour
         mainMenuScreen = GameUtils.FindNestedGameObject("Canvas", "MainMenuScreen");
 
         // Subscribe to the events
-        GameManager.GameOver += GameOver;
-        GameManager.PlayerStart += PlayerStart;
-        GameManager.GameStart += GameStart;
+        EventManager.GameOver += GameOver;
+        EventManager.PlayerStart += PlayerStart;
+        EventManager.GameStart += GameStart;
     }
 
     // Update is called once per frame
@@ -65,6 +65,6 @@ public class UIManager : MonoBehaviour
 
     public void RestartButton()
     {
-        GameManager.FireGameStartEvent();
+        EventManager.FireGameStartEvent();
     }
 }

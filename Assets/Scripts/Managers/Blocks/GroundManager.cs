@@ -25,8 +25,8 @@ public class GroundManager : MonoBehaviour
         cameraY = cameraObj.transform.position.y;
 
         // Subscribe to the events
-        GameManager.PlayerStart += PlayerStart;
-        GameManager.GameStart += GameStart;
+        EventManager.PlayerStart += PlayerStart;
+        EventManager.GameStart += GameStart;
     }
 
     // Update is called once per frame

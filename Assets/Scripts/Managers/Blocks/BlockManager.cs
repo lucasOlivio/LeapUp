@@ -1,16 +1,17 @@
 using UnityEngine;
+using System.Reflection;
 
 public class BlockManager : MonoBehaviour
 {
-    [SerializeField] private float blockSpeed = 1f;
+    [SerializeField] private float blockSpeed;
     [SerializeField] private int[] rangesMove;
-    [SerializeField] private float blinkTime = 1f;
+    [SerializeField] private float blinkTime;
+    [SerializeField] private bool isActive;
 
     private int[] directionMove;
-    private bool isBlockActive;
     private Vector3 initialPosition;
-    private float elapsedTime;
 
+    private float elapsedTime;
     private Collider2D objCollider;
     private SpriteRenderer sprite;
 
@@ -18,17 +19,14 @@ public class BlockManager : MonoBehaviour
     {
         initialPosition = transform.localPosition;
         directionMove = new int[2] { 1, 1 };
-        isBlockActive = true;
         elapsedTime = 0f;
+
         objCollider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
-    }
 
-    private void FixedUpdate()
-    {
-        // MoveBlockX();
-        // MoveBlockY();
-        BlinkBlock();
+        // Set initial visibility based on global position to alternate platforms blinking
+        float parentY = transform.position.y;
+        isActive = (parentY % 10) == 0;
     }
 
     /// <summary>
@@ -70,14 +68,14 @@ public class BlockManager : MonoBehaviour
 
         if (elapsedTime >= blinkTime)
         {
-            isBlockActive = !isBlockActive;
+            isActive = !isActive;
             elapsedTime = 0f;
 
             // Disable collisions
-            objCollider.enabled = isBlockActive;
+            objCollider.enabled = isActive;
 
             // Hide the sprite
-            sprite.enabled = isBlockActive;
+            sprite.enabled = isActive;
         }
     }
 

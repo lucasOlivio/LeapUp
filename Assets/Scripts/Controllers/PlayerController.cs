@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         score = 0;
 
         // Subscribe to the events
-        GameManager.GameStart += GameStart;
+        EventManager.GameStart += GameStart;
     }
 
     private void Update()
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y > startHeight && GameManager.state == GameManager.GameStates.MainMenu)
         {
-            GameManager.FirePlayerStartEvent();
+            EventManager.FirePlayerStartEvent();
         }
     }
 
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ground") && GameManager.state == GameManager.GameStates.Playing)
         {
-            GameManager.FireGameOverEvent();
+            EventManager.FireGameOverEvent();
         }
     }
 
