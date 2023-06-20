@@ -9,13 +9,14 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
 
     // Movement
-    public float moveSpeed = 18f;
+    public float moveSpeed;
+    private float screenCenterX;
 
     // Jump
     public float startHeight;
-    public float jumpForce = 47f;
-    public float gravityScale = 15f;
-    private bool _isGrounded = true;
+    public float jumpForce;
+    public float gravityScale;
+    private bool _isGrounded;
     private Vector3 initialPosition;
 
     // Components
@@ -32,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
         // Subscribe to the events
         EventManager.GameStart += GameStart;
+
+        // save the horizontal center of the screen
+        screenCenterX = Screen.width * 0.5f;
     }
 
     private void Update()
@@ -40,6 +44,29 @@ public class PlayerController : MonoBehaviour
             HandleInput();
 
         UpdateScore();
+    }
+
+    private float GetTouchSide()
+    {
+        // if there are any touches currently
+        if (Input.touchCount == 0)
+            return Input.GetAxisRaw("Horizontal");
+
+
+        // get the first one
+        Touch firstTouch = Input.GetTouch(0);
+
+        // if it began this frame
+        if (firstTouch.position.x > screenCenterX)
+        {
+            return 1;
+        }
+        else if (firstTouch.position.x < screenCenterX)
+        {
+            return -1;
+        }
+
+        return Input.GetAxisRaw("Horizontal");
     }
 
     private void FixedUpdate()
@@ -76,7 +103,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float horizontalInput = GetTouchSide();
         float moveDirection = horizontalInput * moveSpeed;
 
         _rb.velocity = new Vector2(moveDirection, _rb.velocity.y);
@@ -95,7 +122,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if (_isGrounded)
         {
             _isGrounded = false;
             _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
@@ -130,5 +157,6 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = initialPosition;
         score = 0;
+        _isGrounded = false;
     }
 }

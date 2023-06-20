@@ -10,7 +10,7 @@ public class EndlessManager : MonoBehaviour
 {
     public int spacing; // Space between the blocks
     public int width; // The width for each unit of block
-    public float area; // Area in which the player must be
+    public float offset; // offset in which the player must be
     public GameObject blockPrefab; // Prefab for the block object
 
     [SerializeField] protected int axis = -1; // In which axis the movement will occur (0 - x; 1 - y; 2 - z)
@@ -22,10 +22,12 @@ public class EndlessManager : MonoBehaviour
         public GameObject obj; // Reference to the block object
         public Block prev; // Reference to the previous block in the list
         public Block next; // Reference to the next block in te list
+        public float initialY; // Reset Y
 
-        public Block(GameObject obj)
+        public Block(GameObject obj, float initialY)
         {
             this.obj = obj;
+            this.initialY = initialY;
             this.prev = null;
             this.next = null;
         }
@@ -47,6 +49,8 @@ public class EndlessManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventManager.GameOver += GameOver;
+
         if (!validAxis.Contains(axis))
             throw new System.InvalidOperationException("Wrong axis!");
 
@@ -74,7 +78,7 @@ public class EndlessManager : MonoBehaviour
     /// <param name="obj">The new Block to be inserted on the list at the head.</param>
     void InsertOnList(GameObject obj)
     {
-        Block floor = new Block(obj);
+        Block floor = new Block(obj, obj.transform.position.y);
         if (head == null)
         {
             tail = floor;
@@ -96,6 +100,7 @@ public class EndlessManager : MonoBehaviour
         {
             InsertOnList(childTransform.gameObject);
         }
+        UpdateCenter();
         created = true;
     }
 
@@ -164,40 +169,37 @@ public class EndlessManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Removes the block from the head of the list and set as the tail.
-    /// </summary>
-    void GoBackwards()
-    {
-        if (tail == null || head == tail)
-        {
-            return;
-        }
-        Block block = head;
-        head = head.prev;
-        head.next = null;
-        block.prev = null;
-        block.next = tail;
-        tail.prev = block;
-        tail = block;
-
-        MoveBlock(-1);
-    }
-
-    /// <summary>
-    /// Moves the platforms up or down based on the player's position.
+    /// Moves the platforms up based on the player's position.
     /// </summary>
     void MoveBlocks()
     {
         if (!created)
             return;
 
-        if (currentPlayerPos < centerPos - area)
-        {
-            GoBackwards();
-        }
-        else if (currentPlayerPos > centerPos + area)
+        float center = centerPos + offset;
+
+        if (currentPlayerPos > center)
         {
             GoForwards();
         }
+    }
+
+    void GameOver()
+    {
+        Block current = tail;
+
+        while (current != null)
+        {
+            GameUtils.SetPosition(current.obj, current.initialY, axis);
+            Block next = current.next;
+            current.prev = null;
+            current.next = null;
+            current = next;
+        }
+
+        head = null;
+        tail = null;
+
+        CreateInitialBlocks();
     }
 }

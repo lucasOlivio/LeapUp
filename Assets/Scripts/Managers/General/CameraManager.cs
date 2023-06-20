@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CameraManager : MonoBehaviour
 {
+    public float offsetY;
     const int INITIAL_Z = -10;
     private Vector3 initialPosition;
 
@@ -21,8 +22,9 @@ public class CameraManager : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 playerPos = GameManager.GetPlayerPosition();
-        if (playerPos.y < transform.position.y) return;
-        transform.position = new Vector3(0, playerPos.y, INITIAL_Z);
+        float cameraY = playerPos.y + offsetY;
+        if (cameraY < transform.position.y) return;
+        transform.position = new Vector3(0, cameraY, INITIAL_Z);
     }
 
     void GameStart()

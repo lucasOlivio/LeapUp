@@ -56,6 +56,19 @@ public static class GameUtils
     }
 
     /// <summary>
+    /// Set only the given axis for the gameobject
+    /// </summary>
+    /// <param name="gameObject">GameObject to be changed.</param>
+    /// <param name="newPos">New position to set axis.</param>
+    /// <param name="axis">Axis to set the position.</param>
+    public static void SetPosition(GameObject gameObject, float newPos, int axis)
+    {
+        Vector3 currentPosition = gameObject.transform.position;
+        currentPosition[axis] = newPos;
+        gameObject.transform.position = currentPosition;
+    }
+
+    /// <summary>
     /// Recursively searches for a nested GameObject by name within a parent GameObject.
     /// </summary>
     /// <param name="parentObject">The parent GameObject from which to start the search.</param>
