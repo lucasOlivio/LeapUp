@@ -9,24 +9,28 @@ public class GroundManager : MonoBehaviour
     public GameObject groundPrefab; // Ground object to manage
     public Sprite groundBlockSprite; // Sprite referencing the normal ground
     public Sprite deathBlockSprite; // Sprite for the ground where player dies if touches
+    public int offset;
 
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     [SerializeField] private float incrementAmount;   // The amount to increment the Y position per second
     private Vector3 initialPosition;
     private float cameraY; // Minimum distance Y to mantain from camera
 
+    void Awake()
+    {
+        EventManager.PlayerStart += PlayerStart;
+        EventManager.GameStart += GameStart;
+
+        initialPosition = transform.position;
+
+        // Get the SpriteRenderer component attached to the Ground GameObject
+        spriteRenderer = groundPrefab.GetComponent<SpriteRenderer>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        // Get the SpriteRenderer component attached to the Ground GameObject
-        spriteRenderer = groundPrefab.GetComponent<SpriteRenderer>();
-
-        initialPosition = transform.position;
-        cameraY = cameraObj.transform.position.y;
-
-        // Subscribe to the events
-        EventManager.PlayerStart += PlayerStart;
-        EventManager.GameStart += GameStart;
+        cameraY = cameraObj.transform.position.y + offset;
     }
 
     // Update is called once per frame

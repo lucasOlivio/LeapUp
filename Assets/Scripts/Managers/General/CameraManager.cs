@@ -11,7 +11,7 @@ public class CameraManager : MonoBehaviour
     const int INITIAL_Z = -10;
     private Vector3 initialPosition;
 
-    void Start()
+    void Awake()
     {
         initialPosition = transform.position;
 

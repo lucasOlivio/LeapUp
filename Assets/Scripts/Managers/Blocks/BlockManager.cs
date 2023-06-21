@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Reflection;
 
 public class BlockManager : MonoBehaviour
@@ -7,6 +10,7 @@ public class BlockManager : MonoBehaviour
     [SerializeField] private int[] rangesMove;
     [SerializeField] private float blinkTime;
     [SerializeField] private bool isActive;
+    private bool isActiveCopy;
 
     private int[] directionMove;
     private Vector3 initialPosition;
@@ -17,6 +21,7 @@ public class BlockManager : MonoBehaviour
 
     private void Start()
     {
+        EventManager.GameOver += GameOver;
         initialPosition = transform.localPosition;
         directionMove = new int[2] { 1, 1 };
         elapsedTime = 0f;
@@ -24,9 +29,10 @@ public class BlockManager : MonoBehaviour
         objCollider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
 
+        // TODO: Way to make this dynamic accordingly to the spacing of the platforms.
         // Set initial visibility based on global position to alternate platforms blinking
-        float parentY = transform.position.y;
-        isActive = (parentY % 10) == 0;
+        isActive = (transform.position.y % 8) == 0;
+        isActiveCopy = isActive;
     }
 
     /// <summary>
@@ -52,30 +58,42 @@ public class BlockManager : MonoBehaviour
         transform.localPosition = position;
     }
 
-    private void MoveBlockX()
+    IEnumerator MoveBlockX()
     {
-        MoveBlock(0);
-    }
-
-    private void MoveBlockY()
-    {
-        MoveBlock(1);
-    }
-
-    private void BlinkBlock()
-    {
-        elapsedTime += Time.fixedDeltaTime;
-
-        if (elapsedTime >= blinkTime)
+        while (true)
         {
-            isActive = !isActive;
-            elapsedTime = 0f;
+            MoveBlock(0);
+            yield return new WaitForFixedUpdate();
+        }
+    }
 
-            // Disable collisions
-            objCollider.enabled = isActive;
+    IEnumerator MoveBlockY()
+    {
+        while (true)
+        {
+            MoveBlock(1);
+            yield return new WaitForFixedUpdate();
+        }
+    }
 
-            // Hide the sprite
-            sprite.enabled = isActive;
+    IEnumerator BlinkBlock()
+    {
+        while (true)
+        {
+            elapsedTime += Time.fixedDeltaTime;
+
+            if (elapsedTime >= blinkTime)
+            {
+                isActive = !isActive;
+                elapsedTime = 0f;
+
+                // Disable collisions
+                objCollider.enabled = isActive;
+
+                // Hide the sprite
+                sprite.enabled = isActive;
+            }
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -93,5 +111,30 @@ public class BlockManager : MonoBehaviour
         {
             collision.transform.SetParent(null);
         }
+    }
+
+    void ResetBlock()
+    {
+        StopAllCoroutines();
+
+        // Returns all initial states for the block
+        isActive = isActiveCopy;
+        objCollider.enabled = true;
+        sprite.enabled = true;
+        transform.localPosition = initialPosition;
+    }
+
+    public void OnCheckPointEvent(int axis, int currentCheckpoint, List<string> functionsList)
+    {
+        ResetBlock();
+        foreach (string functionName in functionsList)
+        {
+            StartCoroutine(functionName);
+        }
+    }
+
+    void GameOver()
+    {
+        ResetBlock();
     }
 }

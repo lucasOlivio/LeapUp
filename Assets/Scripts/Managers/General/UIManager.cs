@@ -14,11 +14,7 @@ public class UIManager : MonoBehaviour
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         finalScoreText = GameUtils.FindNestedGameObject("Canvas", "FinalScoreText").GetComponent<TextMeshProUGUI>();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
         gameOverScreen = GameUtils.FindNestedGameObject("Canvas", "GameOverScreen");
 
         // Subscribe to the events

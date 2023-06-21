@@ -23,16 +23,18 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     private FixedJoint2D fixedJoint;
 
+    void Awake()
+    {
+        // Subscribe to the events
+        EventManager.GameStart += GameStart;
+        initialPosition = transform.position;
+    }
+
     private void Start()
     {
         fixedJoint = GetComponent<FixedJoint2D>();
 
         _rb = GetComponent<Rigidbody2D>();
-        initialPosition = transform.position;
-        score = 0;
-
-        // Subscribe to the events
-        EventManager.GameStart += GameStart;
 
         // save the horizontal center of the screen
         screenCenterX = Screen.width * 0.5f;

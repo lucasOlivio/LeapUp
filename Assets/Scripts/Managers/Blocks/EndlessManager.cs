@@ -13,6 +13,32 @@ public class EndlessManager : MonoBehaviour
     public float offset; // offset in which the player must be
     public GameObject blockPrefab; // Prefab for the block object
 
+    // Definition for events that will happen for each check point
+    // Ex:
+    // checkpointEventList = [
+    //       CheckPointEvents(
+    //            checkpoint = 10
+    //            events = ["BlockBlink", "MoveBlockX"]
+    //         ),
+    //         CheckPointEvents(
+    //            checkpoint = 20
+    //            events = ["MoveBlockY"]
+    //         )
+    //    ]
+    // So when the block is past the 10 Y it will execute the functions "BlockBlink" and "MoveBlockX"
+    // When is past the 20 it will stop the other functions and execute only "MoveBlockY"
+    [System.Serializable]
+    public class CheckPointEvents
+    {
+        public int checkpoint;
+        public List<string> events;
+    }
+    public List<CheckPointEvents> checkpointEventList;
+
+    private Dictionary<int, List<string>> mappedCheckPointEvents;
+    private SortedSet<int> checkpointsSet = new SortedSet<int>();
+    private int currentCheckPoint = 0;
+
     [SerializeField] protected int axis = -1; // In which axis the movement will occur (0 - x; 1 - y; 2 - z)
     private int[] validAxis = { 0, 1, 2 };
 
@@ -37,7 +63,6 @@ public class EndlessManager : MonoBehaviour
     protected Block tail; // Reference to the last block in the list
 
     protected bool created = false; // Check if all the blocks were created
-    protected int currentPlayerPos; // Current player position
     protected float centerPos; // The center of the area where the player should be
 
     // Total width for the block including the spacing
@@ -46,30 +71,42 @@ public class EndlessManager : MonoBehaviour
         return width + spacing;
     }
 
+    void Awake()
+    {
+        EventManager.GameStart += GameStart;
+        EventManager.GameOver += GameOver;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.GameOver += GameOver;
-
         if (!validAxis.Contains(axis))
             throw new System.InvalidOperationException("Wrong axis!");
-
-        UpdatePlayerCurrentAxisPosition();
-        CreateInitialBlocks();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdatePlayerCurrentAxisPosition();
         if (created && GameManager.isPlayable())
             MoveBlocks();
     }
 
-    // Set the player current position in "axis"
-    protected void UpdatePlayerCurrentAxisPosition()
+    void AddCheckPoint(int checkpoint, List<string> eventsList)
     {
-        currentPlayerPos = (int)GameManager.GetPlayerPosition()[axis];
+        mappedCheckPointEvents[checkpoint] = eventsList;
+        checkpointsSet.Add(checkpoint);
+    }
+
+    void InitiateCheckPointsSet()
+    {
+        if (checkpointEventList == null || checkpointEventList.Count == 0) return;
+
+        mappedCheckPointEvents = new Dictionary<int, List<string>> { };
+        checkpointsSet = new SortedSet<int> { };
+        foreach (CheckPointEvents checkpointEvent in checkpointEventList)
+        {
+            AddCheckPoint(checkpointEvent.checkpoint, checkpointEvent.events);
+        }
     }
 
     /// <summary>
@@ -117,6 +154,30 @@ public class EndlessManager : MonoBehaviour
         centerPos = middle + tailPosition[axis];
     }
 
+    void CheckPoint(GameObject obj)
+    {
+        CheckPointManager checkpointComp = obj.GetComponent<CheckPointManager>();
+        if (checkpointComp == null) return;
+
+        float objAxisPos = obj.transform.position[axis];
+
+        int? nextCheckPoint = null;
+        if (checkpointsSet.Count > 0)
+        {
+            nextCheckPoint = checkpointsSet.First();
+        }
+
+        if (nextCheckPoint != null && objAxisPos >= nextCheckPoint)
+        {
+            currentCheckPoint = (int)nextCheckPoint;
+            checkpointsSet.Remove((int)nextCheckPoint);
+        }
+
+        if (currentCheckPoint == 0) return;
+
+        checkpointComp.OnCheckPoint(axis, currentCheckPoint, mappedCheckPointEvents[currentCheckPoint]);
+    }
+
     /// <summary>
     /// Move the block, up or down, left or right, to the ends of the list depending on the direction to move.
     /// </summary>
@@ -145,6 +206,8 @@ public class EndlessManager : MonoBehaviour
         // Change the position in the axis accordingly
         float deltaChange = (BlockTotalWidth() * direction) + lastPos[axis] - obj.transform.position[axis];
         GameUtils.ChangePosition(obj, deltaChange, axis);
+
+        CheckPoint(obj);
         UpdateCenter();
     }
 
@@ -177,11 +240,18 @@ public class EndlessManager : MonoBehaviour
             return;
 
         float center = centerPos + offset;
+        float currentPlayerPos = GameManager.GetPlayerPosition()[axis];
 
         if (currentPlayerPos > center)
         {
             GoForwards();
         }
+    }
+
+    void GameStart()
+    {
+        CreateInitialBlocks();
+        InitiateCheckPointsSet();
     }
 
     void GameOver()
@@ -199,7 +269,5 @@ public class EndlessManager : MonoBehaviour
 
         head = null;
         tail = null;
-
-        CreateInitialBlocks();
     }
 }

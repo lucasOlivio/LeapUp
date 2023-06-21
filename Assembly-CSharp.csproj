@@ -43,6 +43,7 @@
      <Compile Include="Assets\Scripts\Managers\General\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Managers\General\CameraScript_basic_follow.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\EndlessManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\Blocks\CheckPointManager.cs" />
      <Compile Include="Assets\Scripts\Managers\General\GameManager.cs" />
      <Compile Include="Assets\Scripts\Controllers\Player_basic_movements_rigidbody.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
