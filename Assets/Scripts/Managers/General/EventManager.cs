@@ -16,11 +16,6 @@ public class EventManager : MonoBehaviour
     public static event GameOverDelegate GameOver;
     public static event CheckPointDelegate OnCheckPointEvent;
 
-    void Start()
-    {
-        FireGameStartEvent();
-    }
-
     // Methods to fire the respectives events
     public static void FireGameStartEvent()
     {

@@ -48,11 +48,13 @@ public static class GameUtils
     /// <param name="gameObject">GameObject to be changed.</param>
     /// <param name="deltaChange">Delta to change from the position.</param>
     /// <param name="axis">Axis to change the position.</param>
-    public static void ChangePosition(GameObject gameObject, float deltaChange, int axis)
+    public static float ChangePosition(GameObject gameObject, float deltaChange, int axis)
     {
         Vector3 currentPosition = gameObject.transform.position;
         currentPosition[axis] += deltaChange;
         gameObject.transform.position = currentPosition;
+
+        return gameObject.transform.position[axis];
     }
 
     /// <summary>

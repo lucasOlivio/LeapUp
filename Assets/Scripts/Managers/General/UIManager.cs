@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     TextMeshProUGUI finalScoreText;
     private static GameObject gameOverScreen;
+    private static GameObject menuScreen;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
         finalScoreText = GameUtils.FindNestedGameObject("Canvas", "FinalScoreText").GetComponent<TextMeshProUGUI>();
 
         gameOverScreen = GameUtils.FindNestedGameObject("Canvas", "GameOverScreen");
+        menuScreen = GameUtils.FindNestedGameObject("Canvas", "MainMenuScreen");
 
         // Subscribe to the events
         EventManager.GameOver += GameOver;
@@ -43,6 +45,7 @@ public class UIManager : MonoBehaviour
     void GameStart()
     {
         gameOverScreen.SetActive(false);
+        menuScreen.SetActive(false);
     }
 
     void UpdateScoreUI()

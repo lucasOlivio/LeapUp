@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
     public enum GameStates
     {
         MainMenu,       // The game is in the main menu
+        GameStart,      // The game started
         Playing,        // The game is actively being played
         Paused,         // The game is paused
         GameOver        // The game is over
     }
-    public static List<GameStates> playable = new List<GameStates> { GameStates.MainMenu, GameStates.Playing };
+    public static List<GameStates> playable = new List<GameStates> { GameStates.GameStart, GameStates.Playing };
     private static GameStates _state;
     private static GameObject Player;
 
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
         EventManager.GameStart += GameStartSetup;
         EventManager.PlayerStart += PlayerStartSetup;
         EventManager.GameOver += GameOverSetup;
+
+        _state = GameStates.MainMenu;
     }
 
     // Returns the current player position
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private static void GameStartSetup()
     {
-        _state = GameStates.MainMenu;
+        _state = GameStates.GameStart;
     }
 
     private static void PlayerStartSetup()

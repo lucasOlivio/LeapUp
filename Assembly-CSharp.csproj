@@ -47,13 +47,14 @@
      <Compile Include="Assets\Scripts\Managers\General\GameManager.cs" />
      <Compile Include="Assets\Scripts\Controllers\Player_basic_movements_rigidbody.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Managers\Blocks\Block.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+     <Compile Include="Assets\Scripts\Managers\Blocks\CheckPointActions.cs" />
      <Compile Include="Assets\Scripts\Utils\GameUtils.cs" />
      <Compile Include="Assets\Scripts\Managers\General\UIManager.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\GroundManager.cs" />
      <Compile Include="Assets\Scripts\CustomExceptions\GameObjectNotFoundException.cs" />
      <Compile Include="Assets\Scripts\Controllers\Player_basic_movement.cs" />
-     <Compile Include="Assets\Scripts\Managers\Blocks\BlockManager.cs" />
      <Compile Include="Assets\Scripts\Managers\General\EventManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

@@ -23,6 +23,12 @@ The game is developed in C# using the Unity 2021 engine. The platforms are proce
 - C# 8.0
 - Unity 2021.3.22f1
 
+## Assets
+
+- Background music: hopes, voide, source (Free Music Archive) and license type (CC BY)
+- Block Sprites: Lucas Olivio
+- Background Image: Photo by [Luke Chesser](https://unsplash.com/@lukechesser?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/3rWagdKBF7U?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
 ## Installation
 
 To run LeapUp, follow these steps:

@@ -43,17 +43,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (GameManager.isPlayable()) // If not playable, don't allow to move
-            HandleInput();
+            Move();
 
+        Jump();
         UpdateScore();
     }
 
     private float GetTouchSide()
     {
         // if there are any touches currently
-        if (Input.touchCount == 0)
-            return Input.GetAxisRaw("Horizontal");
-
+        if (Input.touchCount <= 0)
+        {
+            return 0;
+        }
 
         // get the first one
         Touch firstTouch = Input.GetTouch(0);
@@ -68,14 +70,14 @@ public class PlayerController : MonoBehaviour
             return -1;
         }
 
-        return Input.GetAxisRaw("Horizontal");
+        return 0;
     }
 
     private void FixedUpdate()
     {
         ApplyGravity();
 
-        if (transform.position.y > startHeight && GameManager.state == GameManager.GameStates.MainMenu)
+        if (transform.position.y > startHeight && GameManager.state == GameManager.GameStates.GameStart)
         {
             EventManager.FirePlayerStartEvent();
         }
@@ -89,15 +91,6 @@ public class PlayerController : MonoBehaviour
         {
             EventManager.FireGameOverEvent();
         }
-    }
-
-    /// <summary>
-    /// Handles the player's input for movement and jumping.
-    /// </summary>
-    private void HandleInput()
-    {
-        Move();
-        Jump();
     }
 
     /// <summary>
@@ -136,7 +129,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdateGroundedState(Collision2D collision)
     {
-        if (collision.contacts[0].normal.y > 0.5f)
+        if (collision.contacts[0].normal.y >= 0.1f)
         {
             _isGrounded = true;
         }
