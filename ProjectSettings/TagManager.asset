@@ -7,11 +7,12 @@ TagManager:
   - Block
   - Wall
   - Ground
+  - GroundPrefab
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Block
   - Water
   - UI
   - Player

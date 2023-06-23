@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -83,16 +84,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        UpdateGroundedState(collision);
-
-        if (collision.gameObject.CompareTag("Ground") && GameManager.state == GameManager.GameStates.Playing)
-        {
-            EventManager.FireGameOverEvent();
-        }
-    }
-
     /// <summary>
     /// Moves the player left or right based on input.
     /// </summary>
@@ -100,8 +91,28 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = GetTouchSide();
         float moveDirection = horizontalInput * moveSpeed;
+        Vector2 beforePos = transform.position;
 
         _rb.velocity = new Vector2(moveDirection, _rb.velocity.y);
+
+        ValidateIsGrounded(beforePos);
+    }
+
+    void ValidateIsGrounded(Vector2 beforePos)
+    {
+        // Avoid player been grounded on diagonal collisions
+
+        // Create a ray from the position of your object (e.g., player) downward
+        float rayOriginY = transform.position.y - 0.8f;
+        Vector2 rayDirection = Vector2.down;
+        float rayDistance = 0.01f;
+
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, rayOriginY), rayDirection, rayDistance);
+
+        // Check if the ray hit the ground
+        if (hit.collider == null || !hit.collider.gameObject.CompareTag("Block") || _isGrounded) return;
+
+        _isGrounded = true;
     }
 
     /// <summary>
@@ -153,5 +164,15 @@ public class PlayerController : MonoBehaviour
         transform.position = initialPosition;
         score = 0;
         _isGrounded = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        UpdateGroundedState(collision);
+
+        if (collision.gameObject.CompareTag("Ground") && GameManager.state == GameManager.GameStates.Playing)
+        {
+            EventManager.FireGameOverEvent();
+        }
     }
 }
