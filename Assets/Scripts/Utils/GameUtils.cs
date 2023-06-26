@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameUtils
@@ -94,7 +92,7 @@ public static class GameUtils
             }
         }
 
-        // Target GameObject not found, throw an exception
-        throw new GameObjectNotFoundException($"Could not find GameObject with name '{targetObjectName}'");
+        // Target GameObject not found
+        return null;
     }
 }

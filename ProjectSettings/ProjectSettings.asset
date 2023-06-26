@@ -166,8 +166,8 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 22
+  AndroidBundleVersionCode: 3
+  AndroidMinSdkVersion: 28
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -244,7 +244,7 @@ PlayerSettings:
   clonedFromGUID: f918f204a65eb664ba9e5b39d533ff8e
   templatePackageId: com.unity.template.mobile2d@2.0.1
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 0
+  useCustomMainManifest: 1
   useCustomLauncherManifest: 0
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
@@ -253,13 +253,13 @@ PlayerSettings:
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
-  AndroidTargetDevices: 0
+  AndroidTargetDevices: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: user.keystore'
   AndroidKeyaliasName: leapup
   AndroidEnableArmv9SecurityFeatures: 0
-  AndroidBuildApkPerCpuArchitecture: 0
+  AndroidBuildApkPerCpuArchitecture: 1
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
@@ -271,9 +271,9 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  chromeosInputEmulation: 1
+  chromeosInputEmulation: 0
   AndroidMinifyRelease: 1
-  AndroidMinifyDebug: 0
+  AndroidMinifyDebug: 1
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
   m_BuildTargetIcons: []
@@ -341,43 +341,43 @@ PlayerSettings:
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 162
       m_Height: 162
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 108
       m_Height: 108
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
-      - {fileID: 2800000, guid: a4f8ce4103276a44fb4eb6e6fe59fdc3, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 81
       m_Height: 81
       m_Kind: 2
@@ -718,8 +718,10 @@ PlayerSettings:
   scriptingBackend:
     Android: 1
   il2cppCompilerConfiguration: {}
-  il2cppCodeGeneration: {}
+  il2cppCodeGeneration:
+    Android: 1
   managedStrippingLevel:
+    Android: 3
     EmbeddedLinux: 1
     GameCoreScarlett: 1
     GameCoreXboxOne: 1

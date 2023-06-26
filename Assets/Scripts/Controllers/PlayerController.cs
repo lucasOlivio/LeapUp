@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -169,6 +168,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         UpdateGroundedState(collision);
+        GameManager.SavePlayerHighscore(score);
 
         if (collision.gameObject.CompareTag("Ground") && GameManager.state == GameManager.GameStates.Playing)
         {

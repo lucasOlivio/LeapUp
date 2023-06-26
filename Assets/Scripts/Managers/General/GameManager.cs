@@ -1,4 +1,3 @@
-using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -15,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static List<GameStates> playable = new List<GameStates> { GameStates.GameStart, GameStates.Playing };
     private static GameStates _state;
     private static GameObject Player;
+    private static int highScore;
 
     // Public getter for the state variable
     public static GameStates state
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         EventManager.GameOver += GameOverSetup;
 
         _state = GameStates.MainMenu;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
     // Returns the current player position
@@ -50,7 +51,21 @@ public class GameManager : MonoBehaviour
         return Player.GetComponent<PlayerController>().score;
     }
 
+    // Get the player's saved highscore
+    public static int GetPlayerHighScore()
+    {
+        return highScore;
+    }
 
+    // Save new highscore
+    public static void SavePlayerHighscore(int score)
+    {
+        if (score < highScore) return;
+
+        highScore = score;
+        PlayerPrefs.SetInt("HighScore", highScore);
+        PlayerPrefs.Save();
+    }
 
     // Check if the actual state of the game is playable
     public static bool isPlayable()

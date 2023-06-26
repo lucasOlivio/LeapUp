@@ -41,20 +41,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Managers\General\CameraManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\General\CameraScript_basic_follow.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\EndlessManager.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\CheckPointManager.cs" />
      <Compile Include="Assets\Scripts\Managers\General\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Controllers\Player_basic_movements_rigidbody.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\Block.cs" />
-     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\CheckPointActions.cs" />
      <Compile Include="Assets\Scripts\Utils\GameUtils.cs" />
      <Compile Include="Assets\Scripts\Managers\General\UIManager.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\GroundManager.cs" />
-     <Compile Include="Assets\Scripts\CustomExceptions\GameObjectNotFoundException.cs" />
-     <Compile Include="Assets\Scripts\Controllers\Player_basic_movement.cs" />
      <Compile Include="Assets\Scripts\Managers\General\EventManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -74,7 +69,6 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
