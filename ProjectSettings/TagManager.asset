@@ -3,20 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Block
-  - Wall
-  - Ground
-  - GroundPrefab
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Block
+  - 
   - Water
   - UI
-  - Player
-  - PostProcessing
+  - 
+  - 
   - 
   - 
   - 

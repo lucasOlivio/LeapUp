@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 19af264bb14a85f4ab37e356888ba7aa
+  productGUID: 9c998d9921c53d040bcb9bf94dbb9c70
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -53,7 +53,7 @@ PlayerSettings:
   mipStripping: 0
   numberOfMipsStripped: 0
   numberOfMipsStrippedPerMipmapLimitGroup: {}
-  m_StackTraceTypes: 000000000200000000000000000000000200000001000000
+  m_StackTraceTypes: 020000000200000002000000020000000200000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
@@ -133,7 +133,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.0.2
+  bundleVersion: 1.0.5
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -151,7 +151,7 @@ PlayerSettings:
   targetPixelDensity: 30
   resolutionScalingMode: 0
   resetResolutionOnWindowResize: 0
-  androidSupportedAspectRatio: 2
+  androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.LozGamez.com.unity.LeapUp
@@ -164,10 +164,10 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 9
-  AndroidMinSdkVersion: 28
+  AndroidBundleVersionCode: 15
+  AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
-  AndroidPreferredInstallLocation: 1
+  AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
@@ -240,9 +240,9 @@ PlayerSettings:
   appleEnableProMotion: 0
   shaderPrecisionModel: 0
   clonedFromGUID: f918f204a65eb664ba9e5b39d533ff8e
-  templatePackageId: com.unity.template.mobile2d@2.0.1
+  templatePackageId: com.unity.template.mobile2d@3.0.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 1
+  useCustomMainManifest: 0
   useCustomLauncherManifest: 0
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
@@ -251,7 +251,7 @@ PlayerSettings:
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
-  AndroidTargetDevices: 1
+  AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: user.keystore'
@@ -274,110 +274,127 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 786652b8286352b4e91f36fdcd5b5584, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: cb2a5c0c9d2febd4b97d16ff21d2de89, type: 3}
+      - {fileID: 2800000, guid: cb2a5c0c9d2febd4b97d16ff21d2de89, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 87e47f0317551374299bc92053df9874, type: 3}
+      - {fileID: 2800000, guid: 87e47f0317551374299bc92053df9874, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: e2db8919810f2094fb95b6732ab3110e, type: 3}
+      - {fileID: 2800000, guid: e2db8919810f2094fb95b6732ab3110e, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 92a47f85e8422ab428ef56a3f0bdfcd2, type: 3}
+      - {fileID: 2800000, guid: 92a47f85e8422ab428ef56a3f0bdfcd2, type: 3}
       m_Width: 162
       m_Height: 162
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: de193fd1cda3f6e438dfe51c14f1e2cf, type: 3}
+      - {fileID: 2800000, guid: de193fd1cda3f6e438dfe51c14f1e2cf, type: 3}
       m_Width: 108
       m_Height: 108
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: b911c5b1763009d4aaac9fff3a2d8b18, type: 3}
+      - {fileID: 2800000, guid: b911c5b1763009d4aaac9fff3a2d8b18, type: 3}
       m_Width: 81
       m_Height: 81
       m_Kind: 2
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 0de94357b02f3354db23f349c93237dd, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 2ade30a15272d37458d16d8a7e2174e6, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 96
       m_Height: 96
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 4d79be87d2a993e4e8bcaf7e7f3ae1b1, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 4d5bff7e6557cee419fd91259ec9435b, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0b7a217ad0e07f442acdd918a0d08e8b, type: 3}
       m_Width: 36
       m_Height: 36
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
+      - {fileID: 2800000, guid: 0de94357b02f3354db23f349c93237dd, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 2ade30a15272d37458d16d8a7e2174e6, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 69e5c1f8e6f1a02408940d8611c6f1ab, type: 3}
       m_Width: 96
       m_Height: 96
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 4d79be87d2a993e4e8bcaf7e7f3ae1b1, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 4d5bff7e6557cee419fd91259ec9435b, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 0b7a217ad0e07f442acdd918a0d08e8b, type: 3}
       m_Width: 36
       m_Height: 36
       m_Kind: 0
@@ -415,7 +432,7 @@ PlayerSettings:
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
     m_APIs: 150000000b000000
-    m_Automatic: 0
+    m_Automatic: 1
   - m_BuildTarget: iOSSupport
     m_APIs: 10000000
     m_Automatic: 1
@@ -437,6 +454,8 @@ PlayerSettings:
   m_BuildTargetNormalMapEncoding: []
   m_BuildTargetDefaultTextureCompressionFormat:
   - m_BuildTarget: Android
+    m_Format: 3
+  - m_BuildTarget: WebGL
     m_Format: 3
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
@@ -587,8 +606,8 @@ PlayerSettings:
   switchSocketInitializeEnabled: 1
   switchNetworkInterfaceManagerInitializeEnabled: 1
   switchPlayerConnectionEnabled: 1
-  switchUseNewStyleFilepaths: 0
-  switchUseLegacyFmodPriorities: 1
+  switchUseNewStyleFilepaths: 1
+  switchUseLegacyFmodPriorities: 0
   switchUseMicroSleepForYield: 1
   switchEnableRamDiskSupport: 0
   switchMicroSleepForYieldTime: 25
@@ -702,7 +721,6 @@ PlayerSettings:
     GameCoreScarlett: UNITY_POST_PROCESSING_STACK_V2
     GameCoreXboxOne: UNITY_POST_PROCESSING_STACK_V2
     LinuxHeadlessSimulation: UNITY_POST_PROCESSING_STACK_V2
-    Lumin: UNITY_POST_PROCESSING_STACK_V2
     Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2
     PS4: UNITY_POST_PROCESSING_STACK_V2
     PS5: UNITY_POST_PROCESSING_STACK_V2
@@ -717,19 +735,18 @@ PlayerSettings:
   platformArchitecture: {}
   scriptingBackend:
     Android: 1
-  il2cppCompilerConfiguration:
-    Android: 0
+  il2cppCompilerConfiguration: {}
   il2cppCodeGeneration:
     Android: 1
   managedStrippingLevel:
-    Android: 2
+    Android: 3
     EmbeddedLinux: 1
     GameCoreScarlett: 1
     GameCoreXboxOne: 1
-    Lumin: 1
     Nintendo Switch: 1
     PS4: 1
     PS5: 1
+    QNX: 1
     Stadia: 1
     WebGL: 1
     Windows Store Apps: 1
@@ -748,14 +765,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: 2DBuiltInRenderer
+  metroPackageName: LeapUp
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: 2D_BuiltInRenderer
+  metroApplicationDescription: LeapUp
   wsaImages: {}
   metroTileShortName: LeapUp
   metroTileShowName: 0
