@@ -4144,7 +4144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpointEventList:
-  - checkpoint: 33
+  - checkpoint: 30
     events:
     - MovePlatformX
   - checkpoint: 45
@@ -4157,9 +4157,18 @@ MonoBehaviour:
   - checkpoint: 100
     events:
     - BlinkPlatform
-  - checkpoint: 150
+  - checkpoint: 160
     events:
     - BlinkPlatform
+    - MovePlatformX
+  - checkpoint: 200
+    events:
+    - BlinkPlatform
+    - MovePlatformY
+  - checkpoint: 250
+    events:
+    - BlinkPlatform
+    - MovePlatformY
     - MovePlatformX
 --- !u!1 &1194825185
 GameObject:

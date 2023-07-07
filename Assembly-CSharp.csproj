@@ -41,17 +41,63 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Managers\General\CameraManager.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnitySegment.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\EndlessManager.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceImpressionData.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceImpressionDataAndroid.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceOfferwallAndroid.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourcePlacement.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceInterstitialLevelPlayAndroid.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityRewardedVideo.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceSegmentAndroid.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceIAgent.cs" />
+     <Compile Include="Assets\IronSource\Scripts\UnsupportedPlatformAgent.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceBannerEvents.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\CheckPointManager.cs" />
      <Compile Include="Assets\Scripts\Managers\General\GameManager.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityBanner.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityRewardedVideoManual.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityLevelPlayInterstitial.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceEventsDispatcher.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityImpressionData.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityInterstitial.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceMediationSettings.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\Block.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceBannerAndroid.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceConstants.cs" />
+     <Compile Include="Assets\IronSource\DemoScene\IronSourceDemoScript.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSource.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\CheckPointActions.cs" />
+     <Compile Include="Assets\IronSource\Scripts\iOSAgent.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceRewardedVideoManualAndroid.cs" />
      <Compile Include="Assets\Scripts\Utils\GameUtils.cs" />
      <Compile Include="Assets\Scripts\Managers\General\UIManager.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceRewardedVideoAndroid.cs" />
      <Compile Include="Assets\Scripts\Managers\Blocks\GroundManager.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityLevelPlayRewardedVideoManual.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityLevelPlayRewardedVideo.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityInitialization.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceRewardedVideoEvents.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceRewardedVideoLevelPlayManualAndroid.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceEvents.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceInitializationAndroid.cs" />
      <Compile Include="Assets\Scripts\Managers\General\EventManager.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceJSON.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceRewardedVideoLevelPlayAndroid.cs" />
+     <Compile Include="Assets\IronSource\Scripts\AndroidAgent.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceUtils.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceInitilizer.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityOfferwall.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IUnityLevelPlayBanner.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceAdInfo.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceBannerLevelPlayAndroid.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceSegment.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceError.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceConfig.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceInterstitialEvents.cs" />
+     <Compile Include="Assets\IronSource\Scripts\IronSourceInterstitialAndroid.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -753,6 +799,9 @@
     <Reference Include="Unity.Profiling.Core">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Samsung.Android">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Sysroot.Linux_x86_64">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
     </Reference>
@@ -774,6 +823,9 @@
     <Reference Include="Unity.AdaptivePerformance">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Simulator.VRR.Extension">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.VRR.Extension.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -791,6 +843,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Samsung.Android.Editor">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
@@ -828,17 +883,14 @@
     <Reference Include="Unity.2D.Psdimporter.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Subsystem.Registration">
-        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
-        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+    <Reference Include="Unity.Postprocessing.Editor">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>

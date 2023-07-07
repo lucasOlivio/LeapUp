@@ -40,7 +40,20 @@
     <Analyzer Include="D:\Games\2022.2.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\IronSource\Editor\IronSourceDependenciesManagerConstants.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceBuildPostprocessor.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceMenu.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceEditorCoroutines.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceManifestProcessor.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceMediatedNetworkSettings.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourcePlistProcessor.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceMediationSettingsInspector.cs" />
+     <Compile Include="Assets\IronSource\Editor\IAdapterSettings.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceMediatedNetworkSettingsInspector.cs" />
+     <Compile Include="Assets\IronSource\Editor\IronSourceDependenciesManager.cs" />
+     <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.176_manifest.txt" />
+     <None Include="Assets\IronSource\Editor\IronSourceSDKDependencies.xml" />
     <Reference Include="UnityEngine">
         <HintPath>D:\Games\2022.2.15f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -337,6 +350,18 @@
     </Reference>
     <Reference Include="unityplastic">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\PackageCache\com.unity.collab-proxy@2.0.3\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Assets\ExternalDependencyManager\Editor\1.2.176\Google.JarResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Assets\ExternalDependencyManager\Editor\1.2.176\Google.VersionHandlerImpl.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.PackageManagerResolver">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Assets\ExternalDependencyManager\Editor\1.2.176\Google.PackageManagerResolver.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -791,6 +816,9 @@
     <Reference Include="Unity.Profiling.Core">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Samsung.Android">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Sysroot.Linux_x86_64">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
     </Reference>
@@ -812,6 +840,9 @@
     <Reference Include="Unity.AdaptivePerformance">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Simulator.VRR.Extension">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.VRR.Extension.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -829,6 +860,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Samsung.Android.Editor">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
@@ -866,17 +900,14 @@
     <Reference Include="Unity.2D.Psdimporter.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Subsystem.Registration">
-        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Subsystem.Registration.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
-        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+    <Reference Include="Unity.Postprocessing.Editor">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+        <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
         <HintPath>D:\Documentos\DEV\LozGamez\LeapUp\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
