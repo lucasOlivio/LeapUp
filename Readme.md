@@ -39,6 +39,13 @@ To run LeapUp, follow these steps:
 4. Navigate to the main scene.
 5. Press the play button in the Unity Editor to start the game.
 
+## Screenshots
+
+![StartGame](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/leapup.png)
+![Jump1](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/jump1.jpeg)
+![Jump2](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/jump2.jpeg)
+![GameOver](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/gameOver.jpeg)
+
 ## License
 
 LeapUp is licensed under the MIT License. See the LICENSE file for more information.
