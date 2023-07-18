@@ -41,10 +41,10 @@ To run LeapUp, follow these steps:
 
 ## Screenshots
 
-![StartGame](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/leapup.png)
-![Jump1](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/jump1.jpeg)
-![Jump2](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/jump2.jpeg)
-![GameOver](https://github.com/lucasOlivio/LeapUp/blob/main/Assets/GooglePlay/gameOver.jpeg)
+![StartGame](https://github.com/lucasOlivio/LeapUp/blob/main/GooglePlay/leapup.png)
+![Jump1](https://github.com/lucasOlivio/LeapUp/blob/main/GooglePlay/jump1.jpeg)
+![Jump2](https://github.com/lucasOlivio/LeapUp/blob/main/GooglePlay/jump2.jpeg)
+![GameOver](https://github.com/lucasOlivio/LeapUp/blob/main/GooglePlay/gameOver.jpeg)
 
 ## License
 
